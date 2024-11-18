@@ -42,7 +42,7 @@ const SaveButton = () => {
     };
 
     return (
-        <div className="xl:mr-[70%]">
+        <div className="xl:mr-[70%] relative">
             <button
                 className="inline py-[5px] px-[36px] text-[2rem] font-semibold
                        bg-white rounded-[12px] text-[#5881b0]
@@ -52,13 +52,15 @@ const SaveButton = () => {
                 Save
             </button>
             <div
-                className={`absolute text-red-300 xl:text-nowrap text-center
+                className={`absolute text-red-300 text-nowrap text-center
+                            md:left-0 md:-translate-x-0 left-[50%] -translate-x-[50%]
                             ${!displayErrorMessage && "hidden"}`}
             >
                 {errorMessage}
             </div>
             <div
-                className={`absolute text-green-300 xl:text-nowrap text-center
+                className={`absolute text-green-300 text-nowrap text-center
+                            md:left-0 md:-translate-x-0 left-[50%] -translate-x-[50%]
                             ${!displaySuccessMessage && "hidden"}`}
             >
                 {successMessage}
