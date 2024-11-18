@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.mainBlueBg {
+    background-color: #5881b0;
+}
+
+.white-shadow {
+    box-shadow: 0 0px 10px rgba(255, 255, 255, 0.5);
+}
