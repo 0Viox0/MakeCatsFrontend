@@ -1,4 +1,4 @@
-const OrangeLines = ({ className }: { className: string }) => {
+const OrangeLine = ({ className }: { className: string }) => {
     return (
         <div className={`h-[33px] bg-[#e4b790] ${className}`}>
             <div></div>
@@ -6,4 +6,4 @@ const OrangeLines = ({ className }: { className: string }) => {
     );
 };
 
-export default OrangeLines;
+export default OrangeLine;
