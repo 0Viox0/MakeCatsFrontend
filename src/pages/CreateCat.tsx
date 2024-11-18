@@ -2,7 +2,7 @@ import { CreateCatForm } from "../features/createCat";
 
 const CreateCat = () => {
     return (
-        <div className="mainBlueBg h-[100vh]">
+        <div className="mainBlueBg pb-[50px] px-[7px]">
             <CreateCatForm />
         </div>
     );

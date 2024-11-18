@@ -9,7 +9,10 @@ const ChooseItemsForm = () => {
                 Choose items
             </h1>
             <div className="flex justify-center items-center mt-[70px]">
-                <div className="flex flex-col justify-end items-end space-y-[50px]">
+                <div
+                    className="flex flex-col xl:justify-end xl:items-end 
+                                justify-center items-center space-y-[50px]"
+                >
                     <ChooseColorForm text="Ears:" catField="ears" />
                     <ChooseColorForm text="Face:" catField="face" />
                     <ChooseColorForm text="Whiskers:" catField="whiskers" />

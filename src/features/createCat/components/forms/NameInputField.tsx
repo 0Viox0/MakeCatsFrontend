@@ -17,7 +17,7 @@ const NameInputField = () => {
             <div>
                 <input
                     type="text"
-                    className="w-[330px] bg-transparent outline-none 
+                    className="xl:w-[330px] w-full bg-transparent outline-none 
                                text-[1.5rem] text-[#fff4f4] font-semibold"
                     maxLength={30}
                     value={cat.name}

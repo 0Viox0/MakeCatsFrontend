@@ -10,8 +10,8 @@ const ChooseColorForm = ({
     catField: keyof Cat;
 }) => {
     return (
-        <div className="flex justify-start items-center">
-            <h1 className="text-[1.5rem] text-white font-semibold mr-[35px]">
+        <div className="flex xl:flex-row flex-col-reverse justify-start items-center">
+            <h1 className="text-[1.5rem] text-white font-semibold xl:mr-[35px] mr-0">
                 {text}
             </h1>
             <div>

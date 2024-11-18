@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChooseItemsForm from "./forms/ChooseItemsForm";
 import Preview from "./other/Preview";
 import { Cat } from "../types/Cat";
 import { CatPartColor } from "../types/enums";
 import { CatContext } from "../context/catContext";
 import SeparatingLine from "./shapes/SeparatingLine";
-import SaveButton from "./buttons/SaveButton";
 
 const CreateCatForm = () => {
     const [catInfo, setCatInfo] = useState<Cat>(
@@ -31,6 +30,20 @@ const CreateCatForm = () => {
         }));
     };
 
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        const editCatName = params.get("editCat");
+
+        if (editCatName) {
+            const storedCat = localStorage.getItem(editCatName);
+
+            if (storedCat) {
+                const parsedCat = JSON.parse(storedCat) as Cat;
+                setCatInfo(parsedCat);
+            }
+        }
+    }, []);
+
     return (
         <CatContext.Provider
             value={{
@@ -40,19 +53,22 @@ const CreateCatForm = () => {
             }}
         >
             <div className="flex flex-col">
-                <h1 className="text-[#fff1f1] text-[4rem] font-semibold text-center">
+                <h1 className="text-[#fff1f1] md:text-[4rem] text-[2.5rem] font-semibold text-center">
                     Create a cat
                 </h1>
-                <div className="flex mt-[137px]">
-                    <div className="w-1/2 flex flex-col">
+                <div className="flex xl:flex-row flex-col-reverse xl:mt-[137px] mt-[50px]">
+                    <div className="xl:w-1/2 w-full flex flex-col">
                         <ChooseItemsForm />
                     </div>
-                    <div className="flex items-stretch">
+                    <div className="items-stretch xl:flex hidden">
                         <SeparatingLine />
                     </div>
-                    <div className="w-1/2 flex flex-col items-center">
+                    <div
+                        className="xl:w-1/2 w-full flex xl:flex-col flex-col-reverse items-center
+                                    mb-[60px]"
+                    >
                         <Preview />
-                        <h1 className="text-[2rem] text-white font-semibold mt-auto">
+                        <h1 className="text-[2rem] text-white font-semibold mt-auto xl:mb-0 mb-[60px]">
                             Preview
                         </h1>
                     </div>

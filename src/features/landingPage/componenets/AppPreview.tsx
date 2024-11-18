@@ -5,7 +5,10 @@ import PaperPicture from "./other/PaperPicture";
 
 const AppPreview = () => {
     return (
-        <div className="relative flex lg:flex-row flex-col md:px-0 p-[30px]">
+        <div
+            className="relative flex lg:flex-row flex-col md:px-0 p-[30px]
+                        bg-white"
+        >
             <OrangeLine
                 className="w-[571px] h-[33px] rotate-[-30deg] 
                            absolute left-[-5%] top-[23%] lg:block hidden"

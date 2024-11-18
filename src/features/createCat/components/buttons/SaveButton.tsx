@@ -1,11 +1,14 @@
 import { useContext, useState } from "react";
 import { CatContext } from "../../context/catContext";
+import { CatPartColor } from "../../types/enums";
 
 const SaveButton = () => {
-    const { cat } = useContext(CatContext);
+    const { cat, changeCatInfo, changeCatName } = useContext(CatContext);
     const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
-    const [displaySuccessMessage, setDisplaySuccessMessage] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
+    const [displaySuccessMessage, setDisplaySuccessMessage] = useState(false);
+    const [successMessage, setSuccessMessage] = useState("");
 
     const handleOnClick = () => {
         setDisplayErrorMessage(false);
@@ -19,20 +22,27 @@ const SaveButton = () => {
         }
 
         if (localStorage.getItem(cat.name.trim())) {
-            setErrorMessage("Cat with this name already axists");
-            setDisplayErrorMessage(true);
-            setTimeout(() => setDisplayErrorMessage(false), 4000);
-            return;
+            setSuccessMessage("Cat has been updated");
+            setDisplaySuccessMessage(true);
+            setTimeout(() => setDisplaySuccessMessage(false), 4000);
         }
 
         localStorage.setItem(cat.name, JSON.stringify(cat));
-
+        resetCatInfo();
+        setSuccessMessage("The cat has successfully been saved");
         setDisplaySuccessMessage(true);
         setTimeout(() => setDisplaySuccessMessage(false), 4000);
     };
 
+    const resetCatInfo = () => {
+        changeCatName("");
+        changeCatInfo("ears", CatPartColor.Yellow);
+        changeCatInfo("whiskers", CatPartColor.Yellow);
+        changeCatInfo("face", CatPartColor.Black);
+    };
+
     return (
-        <div className="mr-[70%]">
+        <div className="xl:mr-[70%]">
             <button
                 className="inline py-[5px] px-[36px] text-[2rem] font-semibold
                        bg-white rounded-[12px] text-[#5881b0]
@@ -42,14 +52,16 @@ const SaveButton = () => {
                 Save
             </button>
             <div
-                className={`absolute text-red-300 text-nowrap ${!displayErrorMessage && "hidden"}`}
+                className={`absolute text-red-300 xl:text-nowrap text-center
+                            ${!displayErrorMessage && "hidden"}`}
             >
                 {errorMessage}
             </div>
             <div
-                className={`absolute text-green-300 text-nowrap ${!displaySuccessMessage && "hidden"}`}
+                className={`absolute text-green-300 xl:text-nowrap text-center
+                            ${!displaySuccessMessage && "hidden"}`}
             >
-                The cat has successfully been saved
+                {successMessage}
             </div>
         </div>
     );
